@@ -18,7 +18,11 @@ class ArticlesController < ApplicationController
     # Inspect parameters sent to create method
     # render plain: params[:article].inspect
 
+    # debug app with debugger breakpoint
+    # debugger
+
     @article = Article.new(article_params)
+    @article.user = User.first
 
     if @article.save
       flash[:success] = "Article was successfully created"
