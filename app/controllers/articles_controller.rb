@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy] 
 
   def index
-    @articles = Article.all
+    # will_paginate gem syntax
+    @articles = Article.paginate(page: params[:page], per_page: 5)
   end
 
   def new
