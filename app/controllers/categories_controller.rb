@@ -25,14 +25,14 @@ class CategoriesController < ApplicationController
 
   private
   
-  def category_params
-    params.require(:category).permit(:name)
-  end
-
-  def require_admin
-    if !logged_in? || (logged_in? && !current_user.admin)
-      flash[:danger] = "Only admin can perform that action"
-      redirect_to categories_path
+    def category_params
+      params.require(:category).permit(:name)
     end
-  end
+
+    def require_admin
+      if !logged_in? || (logged_in? && !current_user.admin)
+        flash[:danger] = "Only admin can perform that action"
+        redirect_to categories_path
+      end
+    end
 end
