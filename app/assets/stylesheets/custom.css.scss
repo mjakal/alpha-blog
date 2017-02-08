@@ -1,5 +1,14 @@
 $navbar-default-bg: black;
 
+// Navbar links
+$navbar-default-link-color:                #ff0000 !default;
+$navbar-default-link-hover-color:          #fff !default;
+$navbar-default-link-hover-bg:             #ff0000 !default;
+$navbar-default-link-active-color:         #fff !default;
+$navbar-default-link-active-bg:            #ff0000 !default;
+$navbar-default-link-disabled-color:       #ff0000 !default;
+$navbar-default-link-disabled-bg:          transparent !default;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -38,6 +47,10 @@ $navbar-default-bg: black;
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-weight: bold;
+}
+
+.btn-search {
+  background-color: black;
 }
 
 .btn-xlarge {
