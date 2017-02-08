@@ -1,8 +1,9 @@
 class ArticlesController < ApplicationController
   # call set_article method before edit, update, show and destroy 
   before_action :set_article, only: [:edit, :update, :show, :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :search]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :search_query, only: [:search]
 
   def index
     # will_paginate gem syntax
@@ -54,6 +55,17 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def search
+    @articles = Article.search_articles(params[:search], params[:page])
+
+    if @articles.any?
+      render "search"
+    else
+      flash[:danger] = "No results found"
+      redirect_to articles_path
+    end
+  end
+
   private
 
     def set_article
@@ -68,6 +80,16 @@ class ArticlesController < ApplicationController
       if current_user != @article.user && !current_user.admin?
         flash[:danger] = "You can only edit or delete your own articles"
         redirect_to root_path
+      end
+    end
+
+    # validates user input before search
+    def search_query
+      query = params[:search]
+
+      if query.length < 3 || query.length > 30
+        flash[:danger] = "Wrong input"
+        redirect_to articles_path
       end
     end
 end
