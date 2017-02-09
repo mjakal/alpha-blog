@@ -1,13 +1,13 @@
 # Alpha blog
 
-Simple blog app written in rails 5 with some basic testing.
+Simple blog app written in Rails 5 with some basic testing.
 
-App demo on Heroku:
+### App demo:
 
 [https://alpha-blog-enkoder.herokuapp.com/](https://alpha-blog-enkoder.herokuapp.com/)
 
-Admin user: demo@demo.com
-pass: password
+Admin: demo@demo.com  
+pass: password  
 
 ## Features
 
